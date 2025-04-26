@@ -1,0 +1,14 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/riscv_priv_csr_status.vh,1742561358,verilog,,,,,,,,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v,1745480222,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_table_walk.v,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh,sv32,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh,1742731834,verilog,,,,,,,,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_table_walk.v,1745555576,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_data_to_physical.v,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh,sv32_table_walk,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_data_to_physical.v,1744125798,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_instruction_to_physical.v,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh;C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/riscv_priv_csr_status.vh,sv32_translate_data_to_physical,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_instruction_to_physical.v,1744125790,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/tag_ram.v,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh,sv32_translate_instruction_to_physical,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/tag_ram.v,1745423392,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/tb/sv32_test.v,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/riscv_priv_csr_status.vh,tag_ram,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+C:/Users/legion/Desktop/mmu/mmu_with_doc/src/tb/sv32_test.v,1745471775,verilog,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/riscv_priv_csr_status.vh,sv32_test_new,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+E:/cache/project_5/project_5.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v,1745466658,verilog,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v,,blk_mem_gen_0,,,C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl,,,,,
+E:/cache/project_5/project_5.sim/sim_1/behav/xsim/glbl.v,1724786425,verilog,,,,glbl,,,,,,,,

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/cache/project_5/project_5.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module blk_mem_gen_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+ERROR: [VRFC 10-3236] concurrent assignment to a non-net 'tlb_miss_count' is not permitted [C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v:136]
+ERROR: [VRFC 10-8530] module 'sv32' is ignored due to previous errors [C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v:54]
