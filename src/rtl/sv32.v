@@ -82,8 +82,11 @@ module sv32 #(
     output reg  [31:0] fault_address,
     output reg         page_fault,
 <<<<<<< HEAD
+<<<<<<< HEAD
     output wire [31:0] tlb_miss_count// 统计TLB缺失次数
 =======
+=======
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
     output reg[31:0] tlb_miss_count// 统计TLB缺失次数
 
 >>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
@@ -93,7 +96,11 @@ module sv32 #(
   localparam STATE_WIDTH = $clog2(S_LAST);
   reg [STATE_WIDTH-1:0] state, next_state;
 <<<<<<< HEAD
+<<<<<<< HEAD
   reg [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
+=======
+  reg  [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
 =======
   reg  [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
 >>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
@@ -159,6 +166,9 @@ module sv32 #(
         // 统计 TLB 缺失次数
         if (walk_valid && !walk_ready) begin // 表示还在遍历但并没有遍历完
             // internal_tlb_miss_count <= internal_tlb_miss_count + 1;
+<<<<<<< HEAD
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
+=======
 >>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
         end
     end

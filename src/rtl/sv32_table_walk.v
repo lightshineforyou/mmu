@@ -118,6 +118,9 @@ assign tlb_miss_count = internal_tlb_miss_count;
         tlb_miss_count <= 0; // 清空 TLB 时重置计数器
         for (integer i = 0; i < 2; i = i + 1) begin
             tlb_valid[i] <= 0; // 清空 TLB 的有效位
+<<<<<<< HEAD
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
+=======
 >>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
         end
     end
