@@ -38,7 +38,7 @@ module sv32_table_walk #(
     input  wire        walk_mem_ready,
     output reg  [31:0] walk_mem_addr,
     input  wire [31:0] walk_mem_rdata,
-    output reg   [31:0] tlb_miss_count//定义端口
+    output wire  [31:0] tlb_miss_count//定义端口
 );
   localparam ITLB_ENTRY_COUNT_WIDTH = $clog2(NUM_ENTRIES_ITLB);
   localparam DTLB_ENTRY_COUNT_WIDTH = $clog2(NUM_ENTRIES_DTLB);
@@ -46,7 +46,7 @@ module sv32_table_walk #(
 
   wire is_itlb = !is_instruction;
   reg [$clog2(S_LAST) -1:0] state, next_state;
-
+  reg [31:0] internal_tlb_miss_count ;
   // reg [31:0]tlb_miss_count;
   reg  [                       31:0] base;
   reg  [                       31:0] base_nxt;
@@ -104,14 +104,15 @@ module sv32_table_walk #(
       .payload_i(tlb_pte_i),
       .payload_o(tlb_pte_o[1])
   );
-
+assign tlb_miss_count = internal_tlb_miss_count;
   always @(posedge clk) state <= !resetn ? S0 : next_state;
-
+ 
   always @(posedge clk) begin
     if (!resetn || tlb_flush) begin
-        tlb_miss_count <= 0; // 清空 TLB 时重置计数器
-         end else if (valid && !ready) begin
-            tlb_miss_count <= tlb_miss_count + 1; // 统计 TLB 缺失
+        internal_tlb_miss_count <= 0; // 清空 TLB 时重置计数器
+         end  
+       else  if (valid && !ready) begin
+            internal_tlb_miss_count <= internal_tlb_miss_count + 1; // 统计 TLB 缺失
         end
     if (!resetn) begin
       pte   <= 0;
@@ -199,7 +200,7 @@ module sv32_table_walk #(
           ready_nxt = 1'b1;
         end else begin
           walk_mem_valid = 1'b1;
-          tlb_miss_count <= tlb_miss_count + 1; 
+          internal_tlb_miss_count <= internal_tlb_miss_count + 1; 
         end
       end
 
@@ -216,7 +217,7 @@ module sv32_table_walk #(
             ready_nxt = 1'b1;
           end else begin
             /* Pointer to next level of page table */
-            tlb_miss_count <= tlb_miss_count + 1;//统计TLB缺失次数
+            internal_tlb_miss_count <= internal_tlb_miss_count + 1;//统计TLB缺失次数
             if ((!
                 `GET_PTE_R(pte_nxt)
                 && !

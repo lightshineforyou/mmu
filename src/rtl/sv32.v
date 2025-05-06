@@ -82,13 +82,12 @@ module sv32 #(
     output reg  [31:0] fault_address,
     output reg         page_fault,
     output wire [31:0] tlb_miss_count// 统计TLB缺失次数
-
 );
 
   localparam S0 = 0, S1 = 1, S2 = 2, S_LAST = 3;
   localparam STATE_WIDTH = $clog2(S_LAST);
   reg [STATE_WIDTH-1:0] state, next_state;
-  wire [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
+  reg [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
    
   wire [33:0] physical_data_address;
   reg         translate_data_valid;
@@ -133,20 +132,20 @@ module sv32 #(
         .tlb_miss_count (internal_tlb_miss_count) // 连接内部信号
     );
   assign is_page_fault = page_fault_instruction || page_fault_data;
-      assign tlb_miss_count = internal_tlb_miss_count;
+  assign tlb_miss_count = internal_tlb_miss_count;
   always @(posedge clk) begin
     if (!resetn) begin
         page_fault <= 1'b0;
         fault_address <= 0;
-        // internal_tlb_miss_count <= 0; // 初始化 TLB 缺失计数器
+        internal_tlb_miss_count <= 0; // 初始化 TLB 缺失计数器
     end else begin
         page_fault <= is_page_fault;
         if (is_page_fault) fault_address <= cpu_addr;
 
-        // 统计 TLB 缺失次数
-        // if (walk_valid && !walk_ready) begin // 表示还在遍历但并没有遍历完
-        //     // internal_tlb_miss_count <= internal_tlb_miss_count + 1;
-        // end
+        //统计 TLB 缺失次数
+        if (walk_valid && !walk_ready) begin // 表示还在遍历但并没有遍历完
+            internal_tlb_miss_count <= internal_tlb_miss_count + 1;
+        end
     end
 end
 

@@ -170,6 +170,13 @@ initial begin
     write_transaction(32'h0006_0000, 32'h8765_4321, 4'b1111); // 写入第2路
     write_transaction(32'h0007_0000, 32'hDEAD_BEEF, 4'b1111); // 替换第1路
 
+
+ // 添加测试 BRAM 完整地址空间的代码
+    $display("\n=== Test 4: Full BRAM Address Space ===");
+    for (int i = 0; i < 256 * 1024; i = i + 4) begin
+        write_transaction(i, 32'hDEADBEEF, 4'b1111);
+        read_transaction(i, 32'hDEADBEEF);
+    end
     // 完成测试
     #100;
     $display("\n=== All tests completed ===");
