@@ -81,13 +81,22 @@ module sv32 #(
     input  wire [ 1:0] privilege_mode,
     output reg  [31:0] fault_address,
     output reg         page_fault,
+<<<<<<< HEAD
     output wire [31:0] tlb_miss_count// 统计TLB缺失次数
+=======
+    output reg[31:0] tlb_miss_count// 统计TLB缺失次数
+
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
 );
 
   localparam S0 = 0, S1 = 1, S2 = 2, S_LAST = 3;
   localparam STATE_WIDTH = $clog2(S_LAST);
   reg [STATE_WIDTH-1:0] state, next_state;
+<<<<<<< HEAD
   reg [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
+=======
+  reg  [31:0] internal_tlb_miss_count;// 统计TLB缺失次数
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
    
   wire [33:0] physical_data_address;
   reg         translate_data_valid;
@@ -142,9 +151,15 @@ module sv32 #(
         page_fault <= is_page_fault;
         if (is_page_fault) fault_address <= cpu_addr;
 
+<<<<<<< HEAD
         //统计 TLB 缺失次数
         if (walk_valid && !walk_ready) begin // 表示还在遍历但并没有遍历完
             internal_tlb_miss_count <= internal_tlb_miss_count + 1;
+=======
+        // 统计 TLB 缺失次数
+        if (walk_valid && !walk_ready) begin // 表示还在遍历但并没有遍历完
+            // internal_tlb_miss_count <= internal_tlb_miss_count + 1;
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
         end
     end
 end
@@ -227,9 +242,9 @@ end
         mem_valid = walk_mem_valid;
         walk_mem_ready = mem_ready;
         cpu_ready = 1'b0;
-    //     if (walk_valid && !walk_ready) begin
-    //     internal_tlb_miss_count <= internal_tlb_miss_count + 1; // 统计 TLB 缺失
-    // end
+        if (walk_valid && !walk_ready) begin
+        internal_tlb_miss_count <= internal_tlb_miss_count + 1; // 统计 TLB 缺失
+    end
         if (translation_complete && !is_page_fault) begin
           /* translated memory access */
           mem_addr  = selected_phys_addr;

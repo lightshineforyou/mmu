@@ -109,11 +109,18 @@ assign tlb_miss_count = internal_tlb_miss_count;
  
   always @(posedge clk) begin
     if (!resetn || tlb_flush) begin
+<<<<<<< HEAD
         internal_tlb_miss_count <= 0; // 清空 TLB 时重置计数器
          end  
        else  if (valid && !ready) begin
             internal_tlb_miss_count <= internal_tlb_miss_count + 1; // 统计 TLB 缺失
+=======
+        tlb_miss_count <= 0; // 清空 TLB 时重置计数器
+        for (integer i = 0; i < 2; i = i + 1) begin
+            tlb_valid[i] <= 0; // 清空 TLB 的有效位
+>>>>>>> parent of 1c2d09f (可以跑通，但无法计数)
         end
+    end
     if (!resetn) begin
       pte   <= 0;
       ready <= 0;
