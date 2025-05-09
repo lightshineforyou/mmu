@@ -1,55 +1,3 @@
-/*
- *  kianv harris multicycle RISC-V rv32ima
- *
- *  copyright (c) 2023/2024 hirosh dabui <hirosh@dabui.de>
- *
- *  permission to use, copy, modify, and/or distribute this software for any
- *  purpose with or without fee is hereby granted, provided that the above
- *  copyright notice and this permission notice appear in all copies.
- *
- *  the software is provided "as is" and the author disclaims all warranties
- *  with regard to this software including all implied warranties of
- *  merchantability and fitness. in no event shall the author be liable for
- *  any special, direct, indirect, or consequential damages or any damages
- *  whatsoever resulting from loss of use, data or profits, whether in an
- *  action of contract, negligence or other tortious action, arising out of
- *  or in connection with the use or performance of this software.
- */
-
-/*
-    VA: Virtual Address
-    PA: Physical Address
-    satp: Supervisor Address Translation and Protection
-    VPN: Virtual Page Number
-    PPN: Physical Page Number
-    PTE: Page Table Entry
-
-    +---------------------------------+
-    |         Virtual Address         |
-    +--------+--------+---------------+
-    |  VPN[1]|  VPN[0]|    offset     |
-    +---|----+----|---+---------------+
-        |         |
-      +-V-+     +-V-+
-      |   |     |   |
-      |Page Table   |
-      |   |     |   |
-      +---+     +---+
-        |         |
-        |         |
-      +-V-+     +-V-+
-      |PTE|     |PTE|
-      +---+     +---+
-        |         |
-        +---------+
-                |
-    +-----------|--------------------+
-    |        Physical Address        |
-    +--------------------+-----------+
-    |     PPN            |   offset  |
-    +--------------------+-----------+
-*/
-
 `include "sv32.vh"
 
 module sv32 #(
@@ -149,32 +97,24 @@ always @(posedge clk) begin
 end
 
 // === Cache tag ram 接口 ===
-wire [5:0] cache_idx = cpu_addr[11:6]; // index width=6
-wire [19:0] cache_tag = cpu_addr[31:12]; // tag width=20
+wire [5:0] cache_idx = cpu_addr[10:5]; // index width=6
+wire [19:0] cache_tag = cpu_addr[31:11]; // tag width=20
 
 reg cache_we_reg;
 reg [31:0] cache_payload_reg;
 
-// === Cache 写入使能信号 ===
-// === Cache 写入使能信号 ===
+// === Cache 写入使能信号（写直达策略） ===
 always @(*) begin
     cache_we_reg = 1'b0;
     cache_payload_reg = 32'b0;
 
-    // 写入操作（写直达策略）
+    // 写入操作：直接更新缓存（无论是否命中）
     if (cpu_valid && (|cpu_wstrb)) begin
-        if (hit_o) begin
-            // 命中时直接更新缓存
-            cache_we_reg = 1'b1;
-            cache_payload_reg = cpu_wdata;
-        end else if (mem_ready) begin
-            // 未命中且内存响应完成时，分配新行并写入用户数据
-            cache_we_reg = 1'b1;
-            cache_payload_reg = cpu_wdata;
-        end
+        cache_we_reg = 1'b1;
+        cache_payload_reg = cpu_wdata; // 写入用户数据
     end 
     // 读取未命中时加载内存数据
-    else if (cpu_valid && !hit_o && mem_ready) begin
+    else if (cpu_valid && !hit_o) begin
         cache_we_reg = 1'b1;
         cache_payload_reg = mem_rdata;
     end
@@ -185,7 +125,7 @@ wire hit_o;
 
 tag_ram #(
     .TAG_RAM_ADDR_WIDTH(6),
-    .TAG_WIDTH(20),
+    .TAG_WIDTH(21),
     .PAYLOAD_WIDTH(32),
     .WAYS(2)
 ) u_tag_ram (
@@ -197,7 +137,7 @@ tag_ram #(
     .we(cache_we_reg),
     .valid_i(cpu_valid),
     .hit_o(hit_o),
-    .payload_o(cpu_rdata) // 不使用输出
+    .payload_o() // 不使用输出
 );
 
 // === Cache 缺失计数器 ===

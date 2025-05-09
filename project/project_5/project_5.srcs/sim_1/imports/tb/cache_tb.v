@@ -21,129 +21,7 @@ module cache_tb;
     wire [31:0] mem_wdata;
     reg  [31:0] mem_rdata;
     reg         mem_ready;
-
-    // 实例化被测模块
-    sv32 u_sv32 (
-        .clk(clk),
-        .resetn(resetn),
-        .cpu_valid(cpu_valid),
-        .cpu_ready(),          // 由内部逻辑处理
-        .cpu_wstrb(cpu_wstrb),
-        .cpu_addr(cpu_addr),
-        .cpu_wdata(cpu_wdata),
-        .cpu_rdata(cpu_rdata),
-        .mem_valid(mem_valid),
-        .mem_ready(mem_ready),
-        .mem_wstrb(mem_wstrb),
-        .mem_addr(mem_addr),
-        .mem_wdata(mem_wdata),
-        .mem_rdata(mem_rdata),
-        .cache_miss_count(cache_miss_count),
-        .is_instruction(1'b0), // 测试数据缓存
-        .tlb_flush(1'b0),
-        .stall(),
-        .write_back(1'b0),
-        .satp(32'h0),          // 禁用分页
-        .mstatus(32'h0),
-        .privilege_mode(2'b11),
-        .fault_address(),
-        .page_fault()
-    );
-
-    // 时钟生成（周期10ns）
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk;
-    end
-
-    // 主测试流程
-    initial begin
-        // 初始化信号
-        resetn = 0;
-        cpu_valid = 0;
-        cpu_wstrb = 0;
-        cpu_addr = 0;
-        cpu_wdata = 0;
-        mem_ready = 1;          // 内存默认就绪
-        mem_rdata = 32'h0;      // 初始内存数据为0
-        #20;
-        resetn = 1;
-
-        // ===================================
-        // 测试阶段1：验证用户数据写入与缓存命中
-        // ===================================
-        $display("\n--- 阶段1：用户数据验证 ---");
-        
-        // 写入地址 0x100（用户数据 0xa5a5a5a5）
-        write_data(32'h100, 32'ha5a5a5a5);
-        // 读取地址 0x100，应命中（预期用户数据）
-        read_data(32'h100, 32'ha5a5a5a5);
-
-        // 写入地址 0x200（用户数据 0x11111111）
-        write_data(32'h200, 32'h11111111);
-        // 读取地址 0x200，应命中（预期用户数据）
-        read_data(32'h200, 32'h11111111);
-
-        // 写入地址 0x400（用户数据 0x33333333）
-        write_data(32'h400, 32'h33333333);
-        // 读取地址 0x400，应命中（预期用户数据）
-        read_data(32'h400, 32'h33333333);
-
-        // 验证缺失次数（预期3次：三次写入未命中）
-        $display("[阶段1] 缺失次数 = %d (预期3)", cache_miss_count);
-
-        // ===================================
-        // 测试阶段2：混合读写与LRU替换验证
-        // ===================================
-        $display("\n--- 阶段2：混合读写验证 ---");
-        
-        // 读取未写入地址 0x500（预期内存数据 0x00000500）
-        read_data(32'h500, 32'h00000500);
-        // 再次读取 0x500（应命中，预期内存数据）
-        read_data(32'h500, 32'h00000500);
-
-        // 写入新地址 0x600（用户数据 0x66666666）
-        write_data(32'h600, 32'h66666666);
-        // 读取地址 0x600，应命中（预期用户数据）
-        read_data(32'h600, 32'h66666666);
-
-        // 验证缺失次数（3 + 1 = 4）
-        $display("[阶段2] 缺失次数 = %d (预期4)", cache_miss_count);
-
-        // ===================================
-        // 测试阶段3：LRU替换与跨组冲突
-        // ===================================
-        $display("\n--- 阶段3：LRU替换验证 ---");
-        
-        // 写入地址 0x700（用户数据 0x77777777）
-        write_data(32'h700, 32'h77777777);
-        // 写入地址 0x800（用户数据 0x88888888）
-        write_data(32'h800, 32'h88888888);
-        // 写入地址 0x900（用户数据 0x99999999）
-        write_data(32'h900, 32'h99999999);
-
-        // 读取历史地址 0x100（应命中，预期用户数据）
-        read_data(32'h100, 32'ha5a5a5a5);
-        // 读取历史地址 0x700（应命中，预期用户数据）
-        read_data(32'h700, 32'h77777777);
-
-        // 验证缺失次数（4 + 3 = 7）
-        $display("[阶段3] 缺失次数 = %d (预期7)", cache_miss_count);
-
-        // ===================================
-        // 测试结束
-        // ===================================
-        #100;
-        $display("\n--- 测试完成 ---");
-        $finish;
-    end
-
-    // 内存数据动态生成（关键修改点）
-    // --------------------------------
-    // 写入操作：返回用户写入数据（验证缓存加载）
-    // 读取操作：返回地址对齐值（验证缓存未命中行为）
-    // 内存数据动态生成（修复版本）
-// 内存数据动态生成（同步内存响应）
+    // 内存数据动态生成（同步版本）
 reg [31:0] stored_data [0:1023]; // 模拟内存存储
 
 always @(posedge clk) begin
@@ -169,7 +47,115 @@ always @(*) begin
     end
 end
 
-    // 写入任务（模拟用户数据写入）
+    // 实例化被测模块
+    sv32 u_sv32 (
+        .clk(clk),
+        .resetn(resetn),
+        .cpu_valid(cpu_valid),
+        .cpu_ready(),          // 未连接（由内部逻辑处理）
+        .cpu_wstrb(cpu_wstrb),
+        .cpu_addr(cpu_addr),
+        .cpu_wdata(cpu_wdata),
+        .cpu_rdata(cpu_rdata),
+        .mem_valid(mem_valid),
+        .mem_ready(mem_ready),
+        .mem_wstrb(mem_wstrb),
+        .mem_addr(mem_addr),
+        .mem_wdata(mem_wdata),
+        .mem_rdata(mem_rdata),
+        .cache_miss_count(cache_miss_count),
+        .is_instruction(1'b0), // 仅测试数据缓存
+        .tlb_flush(1'b0),
+        .stall(),
+        .write_back(1'b0),
+        .satp(32'h0),          // 禁用分页
+        .mstatus(32'h0),
+        .privilege_mode(2'b11),
+        .fault_address(),
+        .page_fault()
+    );
+
+    // 时钟生成
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    // 主测试流程
+    initial begin
+        // 初始化
+        resetn = 0;
+        cpu_valid = 0;
+        cpu_wstrb = 0;
+        cpu_addr = 0;
+        cpu_wdata = 0;
+        mem_ready = 1;          // 内存始终就绪
+        mem_rdata = 32'h0;      // 内存返回数据初始化为0
+        #20;
+        resetn = 1;
+
+        // ===================================
+        // 测试阶段1：基本读写验证（同一索引不同标签）
+        // ===================================
+        $display("\n--- 阶段1：基本读写验证 ---");
+        
+        // 写入地址 0x100（索引=4, 标签=0x04）
+        write_data(32'h100, 32'ha5a5a5a5);
+        // 读取地址 0x100，应命中
+        read_data(32'h100, 32'ha5a5a5a5);
+
+        // 写入地址 0x200（索引=8, 标签=0x08）
+        write_data(32'h200, 32'h11111111);
+        // 读取地址 0x200，应命中
+        read_data(32'h200, 32'h11111111);
+
+        // 写入地址 0x400（索引=16, 标签=0x10）
+        write_data(32'h400, 32'h33333333);
+        // 读取地址 0x400，应命中
+        read_data(32'h400, 32'h33333333);
+
+        // 验证缺失次数（预期3次）
+        $display("[阶段1] 缺失次数 = %d (预期3)", cache_miss_count);
+
+        // ===================================
+        // 测试阶段2：LRU替换策略验证
+        // ===================================
+        $display("\n--- 阶段2：LRU替换验证 ---");
+        
+        // 访问地址 0x500（索引=20, 标签=0x14）-> 缺失
+        read_data(32'h500, 32'h0);
+        // 访问地址 0x600（索引=24, 标签=0x18）-> 缺失
+        read_data(32'h600, 32'h0);
+        // 再次访问 0x100（索引=4）-> 应命中，LRU不更新
+        read_data(32'h100, 32'ha5a5a5a5);
+        // 访问地址 0x700（索引=28, 标签=0x1C）-> 缺失（替换LRU路）
+        read_data(32'h700, 32'h0);
+        // 验证缺失次数（3 + 3 = 6）
+        $display("[阶段2] 缺失次数 = %d (预期6)", cache_miss_count);
+
+        // ===================================
+        // 测试阶段3：跨组冲突验证
+        // ===================================
+        $display("\n--- 阶段3：跨组冲突验证 ---");
+        
+        // 访问地址 0x800（索引=32, 标签=0x20）-> 缺失
+        read_data(32'h800, 32'h0);
+        // 访问地址 0x900（索引=36, 标签=0x24）-> 缺失
+        read_data(32'h900, 32'h0);
+        // 再次访问 0x100（索引=4）-> 应命中
+        read_data(32'h100, 32'ha5a5a5a5);
+        // 验证缺失次数（6 + 2 = 8）
+        $display("[阶段3] 缺失次数 = %d (预期8)", cache_miss_count);
+
+        // ===================================
+        // 测试结束
+        // ===================================
+        #100;
+        $display("\n--- 测试完成 ---");
+        $finish;
+    end
+
+    // 写入任务
     task write_data(input [31:0] addr, input [31:0] data);
         begin
             @(negedge clk);
@@ -185,7 +171,7 @@ end
         end
     endtask
 
-    // 读取任务（严格校验预期值）
+    // 读取任务（带预期值检查）
     task read_data(input [31:0] addr, input [31:0] expected);
         begin
             @(negedge clk);
@@ -194,7 +180,7 @@ end
             cpu_addr = addr;
             @(negedge clk);
             cpu_valid = 0;
-            #20; // 等待缓存和内存响应
+            #20; // 等待结果稳定
             if (cpu_rdata !== expected) begin
                 $error("[错误] 地址=0x%h 预期=0x%h 实际=0x%h", addr, expected, cpu_rdata);
             end else begin
@@ -203,4 +189,4 @@ end
         end
     endtask
 
-endmodule
+endmodule 
