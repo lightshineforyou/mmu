@@ -2830,3 +2830,7 @@ dismissDialog("Run Simulation"); // e (Run Simulation Progress)
 selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 657, 102); // cD (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
 selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 666, 121); // cD (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
 selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 664, 308); // cD (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// WARNING: HEventQueue.dispatchEvent() is taking  1348 ms.
+// Elapsed time: 1375 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 5, 189); // cD (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cD (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
