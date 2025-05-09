@@ -1,0 +1,71 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed May  7 09:01:54 2025
+# Process ID         : 14448
+# Current directory  : C:/Users/91629/Desktop/mmu/project/project_5
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent22260 C:\Users\91629\Desktop\mmu\project\project_5\project_5.xpr
+# Log file           : C:/Users/91629/Desktop/mmu/project/project_5/vivado.log
+# Journal file       : C:/Users/91629/Desktop/mmu/project/project_5\vivado.jou
+# Running On         : wangzhangzhuo
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 7840H w/Radeon 780M Graphics
+# CPU Frequency      : 3793 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16334 MB
+# Swap memory        : 7200 MB
+# Total Virtual      : 23535 MB
+# Available Virtual  : 7915 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/91629/Desktop/mmu/project/project_5/project_5.xpr
+update_compile_order -fileset sources_1
+import_files -force -norecurse {C:/Users/91629/Desktop/mmu/src/rtl/riscv_priv_csr_status.vh C:/Users/91629/Desktop/mmu/src/rtl/sv32.vh}
+import_files -force -norecurse {C:/Users/91629/Desktop/mmu/src/rtl/sv32.v C:/Users/91629/Desktop/mmu/src/rtl/sv32_table_walk.v C:/Users/91629/Desktop/mmu/src/rtl/sv32_translate_instruction_to_physical.v C:/Users/91629/Desktop/mmu/src/rtl/sv32_translate_data_to_physical.v C:/Users/91629/Desktop/mmu/src/rtl/tag_ram.v}
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+import_files -fileset sim_1 -norecurse C:/Users/91629/Desktop/mmu/src/tb/cache_tb.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+update_compile_order -fileset sources_1
+launch_simulation
+update_compile_order -fileset sources_1
+launch_simulation
+source cache_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+launch_simulation
+source cache_tb.tcl
+close_sim

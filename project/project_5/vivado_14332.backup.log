@@ -1,0 +1,1126 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Thu May  8 14:22:12 2025
+# Process ID         : 14332
+# Current directory  : C:/Users/91629/Desktop/mmu/project/project_5
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent24516 C:\Users\91629\Desktop\mmu\project\project_5\project_5.xpr
+# Log file           : C:/Users/91629/Desktop/mmu/project/project_5/vivado.log
+# Journal file       : C:/Users/91629/Desktop/mmu/project/project_5\vivado.jou
+# Running On         : wangzhangzhuo
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 22631
+# Processor Detail   : AMD Ryzen 7 7840H w/Radeon 780M Graphics
+# CPU Frequency      : 3793 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16334 MB
+# Swap memory        : 7245 MB
+# Total Virtual      : 23580 MB
+# Available Virtual  : 5796 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/91629/Desktop/mmu/project/project_5/project_5.xpr
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.vh'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_table_walk.v'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/riscv_priv_csr_status.vh'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_data_to_physical.v'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32_translate_instruction_to_physical.v'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/tag_ram.v'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/rtl/sv32.v'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/init.coe'.
+CRITICAL WARNING: [Project 1-19] Could not find the file 'C:/Users/legion/Desktop/mmu/mmu_with_doc/src/tb/sv32_test.v'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2024.2/data/ip'.
+update_compile_order -fileset sources_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+WARNING: [VRFC 10-3380] identifier 'hit_o' is used before its declaration [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v:165]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_table_walk
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_translate_data_to_physical
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_translate_instruction_to_physical
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+ERROR: [VRFC 10-4982] syntax error near 'memory' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:109]
+ERROR: [VRFC 10-2989] 'i' is not declared [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:109]
+ERROR: [VRFC 10-8530] module 'cache_tb' is ignored due to previous errors [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:3]
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+WARNING: [VRFC 10-3380] identifier 'hit_o' is used before its declaration [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v:165]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_table_walk
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_translate_data_to_physical
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32_translate_instruction_to_physical
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 54. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" Line 22. Module sv32_translate_instruction_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" Line 23. Module sv32_translate_data_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 54. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" Line 22. Module sv32_translate_instruction_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" Line 23. Module sv32_translate_data_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32_table_walk_default
+Compiling module xil_defaultlib.sv32_translate_instruction_to_ph...
+Compiling module xil_defaultlib.sv32_translate_data_to_physical_...
+Compiling module xil_defaultlib.sv32_default
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/tags is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/payloads is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/v is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/lru is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+
+=== 测试1：基本写后读验证 ===
+[MEM] Write Addr=000001000 Data=11223344
+[TEST] 写入地址：0x00001000，数据：0x11223344
+[MEM] Write Addr=000001000 Data=11223344
+[MEM] Read Addr=000001000 Data=00000000
+[TAGRAM] Write Way          x[ 1] Tag=00001 Data=00000000
+Error: [ERROR] 地址0x00001000 数据错误！期望：0x11223344，实际：0xxxxxxxxx
+Time: 105 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000001000 Data=xxxxxxxx
+
+=== 测试2：缓存替换验证 ===
+[MEM] Write Addr=000002000 Data=aabbccdd
+[TEST] 写入地址：0x00002000，数据：0xaabbccdd
+[MEM] Write Addr=000002000 Data=aabbccdd
+[MEM] Write Addr=000003000 Data=ddccbbaa
+[TEST] 写入地址：0x00003000，数据：0xddccbbaa
+[MEM] Write Addr=000003000 Data=ddccbbaa
+[MEM] Write Addr=000004000 Data=12345678
+[TEST] 写入地址：0x00004000，数据：0x12345678
+[MEM] Write Addr=000004000 Data=12345678
+[MEM] Read Addr=000004000 Data=xxxxxxxx
+[TAGRAM] Write Way          x[ 4] Tag=00004 Data=xxxxxxxx
+Error: [ERROR] 地址0x00004000 数据错误！期望：0x12345678，实际：0xxxxxxxxx
+Time: 255 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000004000 Data=xxxxxxxx
+
+=== 测试3：写未命中验证 ===
+[MEM] Write Addr=000005000 Data=55aa55aa
+[TEST] 写入地址：0x00005000，数据：0x55aa55aa
+[MEM] Write Addr=000005000 Data=55aa55aa
+[MEM] Read Addr=000005000 Data=xxxxxxxx
+[TAGRAM] Write Way          x[ 5] Tag=00005 Data=xxxxxxxx
+Error: [ERROR] 地址0x00005000 数据错误！期望：0x55aa55aa，实际：0xxxxxxxxx
+Time: 325 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000005000 Data=xxxxxxxx
+
+========================================
+           所有测试通过！               
+========================================
+
+$finish called at time : 395 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 140
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 1246.238 ; gain = 19.336
+update_compile_order -fileset sources_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+ERROR: [VRFC 10-4982] syntax error near '|' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v:116]
+ERROR: [VRFC 10-8530] module 'sv32' is ignored due to previous errors [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v:22]
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 22. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 22. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32_default
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/tags is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/payloads is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/v is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/lru is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+
+=== 测试1：基本写后读验证 ===
+[MEM] Write Addr=000001000 Data=11223344
+[TEST] 写入地址：0x00001000，数据：0x11223344
+[MEM] Write Addr=000001000 Data=11223344
+[MEM] Read Addr=000001000 Data=00000000
+Error: [ERROR] 地址0x00001000 数据错误！期望：0x11223344，实际：0xxxxxxxxx
+Time: 95 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000001000 Data=xxxxxxxx
+
+=== 测试2：缓存替换验证 ===
+[MEM] Write Addr=000002000 Data=aabbccdd
+[TEST] 写入地址：0x00002000，数据：0xaabbccdd
+[MEM] Write Addr=000002000 Data=aabbccdd
+[MEM] Write Addr=000003000 Data=ddccbbaa
+[TEST] 写入地址：0x00003000，数据：0xddccbbaa
+[MEM] Write Addr=000003000 Data=ddccbbaa
+[MEM] Write Addr=000004000 Data=12345678
+[TEST] 写入地址：0x00004000，数据：0x12345678
+[MEM] Write Addr=000004000 Data=12345678
+[MEM] Read Addr=000004000 Data=xxxxxxxx
+Error: [ERROR] 地址0x00004000 数据错误！期望：0x12345678，实际：0xxxxxxxxx
+Time: 215 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000004000 Data=xxxxxxxx
+
+=== 测试3：写未命中验证 ===
+[MEM] Write Addr=000005000 Data=55aa55aa
+[TEST] 写入地址：0x00005000，数据：0x55aa55aa
+[MEM] Write Addr=000005000 Data=55aa55aa
+[MEM] Read Addr=000005000 Data=xxxxxxxx
+Error: [ERROR] 地址0x00005000 数据错误！期望：0x55aa55aa，实际：0xxxxxxxxx
+Time: 275 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 178
+[MEM] Read Addr=000005000 Data=xxxxxxxx
+
+========================================
+           所有测试通过！               
+========================================
+
+$finish called at time : 345 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 140
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 1259.820 ; gain = 0.527
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2991] 'u_tag_ram' is not declared under prefix 'u_dut' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:190]
+ERROR: [VRFC 10-2991] 'u_tag_ram' is not declared under prefix 'u_dut' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:191]
+ERROR: [VRFC 10-2991] 'u_tag_ram' is not declared under prefix 'u_dut' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:192]
+ERROR: [VRFC 10-2991] 'u_tag_ram' is not declared under prefix 'u_dut' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:193]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/tags is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/payloads is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/v is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/lru is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+
+=== 测试1：基本写后读验证 ===
+[MEM] Write Addr=000001000 Data=11223344
+[MEM] Write Addr=000001000 Data=11223344
+[TAGRAM] WWay0[1] T=00001 D=11223344
+[TEST] 写入地址：0x00001000，数据：0x11223344
+[TEST] 读取地址：0x00001000，数据正确：0x11223344
+
+=== 测试2：缓存替换验证 ===
+[TAGRAM] WWay1[2] T=00002 D=aabbccdd
+[TEST] 写入地址：0x00002000，数据：0xaabbccdd
+[TAGRAM] WWay0[3] T=00003 D=ddccbbaa
+[TEST] 写入地址：0x00003000，数据：0xddccbbaa
+[TAGRAM] WWay1[4] T=00004 D=12345678
+[TEST] 写入地址：0x00004000，数据：0x12345678
+[TEST] 读取地址：0x00004000，数据正确：0x12345678
+
+=== 测试3：写未命中验证 ===
+[TAGRAM] WWay0[5] T=00005 D=55aa55aa
+[TEST] 写入地址：0x00005000，数据：0x55aa55aa
+[TEST] 读取地址：0x00005000，数据正确：0x55aa55aa
+
+========================================
+           所有测试通过！               
+========================================
+
+$finish called at time : 375 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 140
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 1263.691 ; gain = 3.797
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/tags is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/payloads is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/v is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /cache_tb/u_dut/u_tag_ram/lru is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+
+=== 测试1：基本写后读验证 ===
+[MEM] Write Addr=000001000 Data=11223344
+[MEM] Write Addr=000001000 Data=11223344
+[TAGRAM] WWay0[1] T=00001 D=11223344
+[TEST] 写入地址：0x00001000，数据：0x11223344
+[TEST] 读取地址：0x00001000，数据正确：0x11223344
+
+=== 测试2：缓存替换验证 ===
+[TAGRAM] WWay1[2] T=00002 D=aabbccdd
+[TEST] 写入地址：0x00002000，数据：0xaabbccdd
+[TAGRAM] WWay0[3] T=00003 D=ddccbbaa
+[TEST] 写入地址：0x00003000，数据：0xddccbbaa
+[TAGRAM] WWay1[4] T=00004 D=12345678
+[TEST] 写入地址：0x00004000，数据：0x12345678
+[TEST] 读取地址：0x00004000，数据正确：0x12345678
+
+=== 测试3：写未命中验证 ===
+[TAGRAM] WWay0[5] T=00005 D=55aa55aa
+[TEST] 写入地址：0x00005000，数据：0x55aa55aa
+[TEST] 读取地址：0x00005000，数据正确：0x55aa55aa
+
+========================================
+           所有测试通过！               
+========================================
+
+$finish called at time : 375 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 140
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1263.961 ; gain = 0.270
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000500 期望＝0x00000000 实际＝0x33333333
+Time: 265 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 159
+Error: [错误] 读取 地址＝0x00000500 期望＝0x00000000 实际＝0x33333333
+Time: 295 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 159
+[统计] Cache 缺失次数 = 5 次
+$finish called at time : 357 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 127
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1263.961 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 265 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 160
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 295 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 160
+Error: [错误] 读取 地址＝0x00000500 期望＝0x00000000 实际＝0x33333333
+Time: 325 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 160
+[统计] Cache 缺失次数 = 5 次
+$finish called at time : 387 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 128
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1264.953 ; gain = 0.992
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 265 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 159
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 295 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 159
+[统计] Cache 缺失次数 = 5 次
+$finish called at time : 357 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 127
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1265.352 ; gain = 0.398
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+ERROR: [VRFC 10-1065] multiple statement function/task without begin/end not supported in this mode of Verilog [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:44]
+ERROR: [VRFC 10-1065] multiple statement function/task without begin/end not supported in this mode of Verilog [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:50]
+ERROR: [VRFC 10-8530] module 'cache_tb' is ignored due to previous errors [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v:4]
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 275 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 325 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+[统计] Cache 缺失次数 = 6 次
+$finish called at time : 387 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 130
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1266.129 ; gain = 0.777
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 275 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 325 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+[统计] Cache 缺失次数 = 6 次
+$finish called at time : 387 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 130
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1266.242 ; gain = 0.113
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'cache_tb'
+WARNING: [Vivado 12-13340] Unable to auto find GCC executables from simulator install path! (path not set)
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'D:/Xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'D:/Xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'cache_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim/blk_mem_gen_0.mif'
+WARNING: [SIM-utils-42] Failed to copy file 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe' to 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim' : error copying "C:/Users/91629/Desktop/mmu/project/project_5/project_5.ip_user_files/mem_init_files/init.coe": no such file or directory
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj cache_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tag_ram
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cache_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cache_tb_behav xil_defaultlib.cache_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.tag_ram_default
+Compiling module xil_defaultlib.sv32
+Compiling module xil_defaultlib.cache_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot cache_tb_behav
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1353.699 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '5' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/91629/Desktop/mmu/project/project_5/project_5.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "cache_tb_behav -key {Behavioral:sim_1:Functional:cache_tb} -tclbatch {cache_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source cache_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+[TAGRAM] WWay0[0] T=00000 D=a5a5a5a5
+[测试] 写入 地址＝0x00000100 数据＝0xa5a5a5a5 成功
+[测试] 读取 地址＝0x00000100 数据＝0xa5a5a5a5 正确
+[TAGRAM] WWay1[0] T=00000 D=11111111
+[测试] 写入 地址＝0x00000200 数据＝0x11111111 成功
+[TAGRAM] WWay0[0] T=00000 D=22222222
+[测试] 写入 地址＝0x00000300 数据＝0x22222222 成功
+[TAGRAM] WWay1[0] T=00000 D=33333333
+[测试] 写入 地址＝0x00000400 数据＝0x33333333 成功
+[测试] 读取 地址＝0x00000400 数据＝0x33333333 正确
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 265 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+Error: [错误] 读取 地址＝0x00000600 期望＝0x00000000 实际＝0x33333333
+Time: 315 ns  Iteration: 0  Process: /cache_tb/test_read  Scope: cache_tb.test_read  File: C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v Line: 162
+[统计] Cache 缺失次数 = 5 次
+$finish called at time : 377 ns : File "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sim_1/imports/tb/cache_tb.v" Line 130
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'cache_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 1353.699 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu May  8 21:54:10 2025...
