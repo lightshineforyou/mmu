@@ -60,3 +60,8 @@ update_compile_order -fileset sources_1
 close_sim
 launch_simulation
 source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation

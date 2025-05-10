@@ -96,6 +96,12 @@ module cache_tb;
         end
     end
 
+    // 新增统计相关变量
+    integer total_misses = 0;
+    integer current_test_misses = 0;
+    integer test_case_num = 1;
+    integer expected_misses[1:3];  // 存储各测试用例预期未命中数
+
     // 主测试流程
     initial begin
         // 初始化
@@ -115,28 +121,56 @@ module cache_tb;
         wait(resetn);
         #30;
 
+        // 设置预期未命中数
+        expected_misses[1] = 2;  // Test1: 写未命中+读未命中
+        expected_misses[2] = 3;  // Test2: 写Way0+写Way1+替换写
+        expected_misses[3] = 1;  // Test3: 写未命中
+
         // ============ 测试1：基本写后读 ============
         $display("\n=== 测试1：基本写后读验证 ===");
+        begin_test_case();
         test_write(32'h1000, 32'h11223344);
         test_read(32'h1000, 32'h11223344);
+        end_test_case(1);
 
         // ============ 测试2：缓存替换 ============
         $display("\n=== 测试2：缓存替换验证 ===");
-        // 写满两路
+        begin_test_case();
         test_write(32'h2000, 32'hAABBCCDD); // Way0[0]
         test_write(32'h3000, 32'hDDCCBBAA); // Way1[0]
-        // 触发替换
         test_write(32'h4000, 32'h12345678); // 应替换LRU路
         test_read(32'h4000, 32'h12345678);
+        end_test_case(2);
 
         // ============ 测试3：写未命中 ============
         $display("\n=== 测试3：写未命中验证 ===");
+        begin_test_case();
         test_write(32'h5000, 32'h55AA55AA);
         test_read(32'h5000, 32'h55AA55AA);
+        end_test_case(3);
 
-        $display("\n========================================");
-        $display("           所有测试通过！               ");
-        $display("========================================\n");
+        // 显示最终统计
+        $display("\n============ 缓存性能统计 ============");
+        $display("| 测试用例 | 预期未命中 | 实际未命中 | 状态 |");
+        $display("|----------|------------|------------|------|");
+        $display("|   Test1  |     %2d     |     %2d     | %s |",
+                expected_misses[1], 
+                get_miss_count(1),
+                (get_miss_count(1)==expected_misses[1]) ? "通过" : "失败");
+        $display("|   Test2  |     %2d     |     %2d     | %s |",
+                expected_misses[2], 
+                get_miss_count(2),
+                (get_miss_count(2)==expected_misses[2]) ? "通过" : "失败");
+        $display("|   Test3  |     %2d     |     %2d     | %s |",
+                expected_misses[3], 
+                get_miss_count(3),
+                (get_miss_count(3)==expected_misses[3]) ? "通过" : "失败");
+        $display("----------------------------------------");
+        $display("|  总计    |     %2d     |     %2d     |      |",
+                expected_misses[1]+expected_misses[2]+expected_misses[3],
+                total_misses);
+        $display("========================================");
+
         #50 $finish;
     end
 
@@ -181,6 +215,42 @@ module cache_tb;
         #20;
     end
     endtask
+
+    // ================= 新增统计任务 =================
+    task begin_test_case;
+    begin
+        current_test_misses = u_dut.cache_miss_count;
+        $display("[STAT] 开始测试用例 %0d，当前未命中数：%0d", 
+                test_case_num, current_test_misses);
+    end
+    endtask
+
+    task end_test_case;
+        input integer tc_num;
+        integer actual_misses;
+    begin
+        actual_misses = u_dut.cache_miss_count - current_test_misses;
+        total_misses = actual_misses + total_misses;
+        $display("[STAT] 测试用例 %0d 结果：", tc_num);
+        $display("   预期未命中：%0d", expected_misses[tc_num]);
+        $display("   实际未命中：%0d", actual_misses);
+        $display("   内存访问次数：%0d", actual_misses);
+        test_case_num =  1 + test_case_num;
+        #20;
+    end
+    endtask
+
+    function integer get_miss_count;
+        input integer tc;
+    begin
+        case(tc)
+            1: get_miss_count = expected_misses[1];
+            2: get_miss_count = expected_misses[2];
+            3: get_miss_count = expected_misses[3];
+            default: get_miss_count = 0;
+        endcase
+    end
+    endfunction
 
     // ================= 波形记录 =================
     initial begin
