@@ -24,3 +24,39 @@
 start_gui
 open_project C:/Users/91629/Desktop/mmu/project/project_5/project_5.xpr
 update_compile_order -fileset sources_1
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+close_project
+open_project C:/Users/91629/Desktop/mmu/project/project_5/project_5.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+source cache_tb.tcl
+close_sim
+launch_simulation
+source cache_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+source cache_tb.tcl
