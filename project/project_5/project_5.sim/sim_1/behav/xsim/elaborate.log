@@ -5,37 +5,12 @@ Running: D:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 20 differs from formal bit length 21 for port 'tag' [C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v:135]
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 3. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram(TAG_WIDTH=21) doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" Line 22. Module sv32_translate_instruction_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" Line 23. Module sv32_translate_data_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32.v" Line 3. Module sv32_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram(TAG_WIDTH=21) doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_table_walk.v" Line 22. Module sv32_table_walk_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/tag_ram.v" Line 1. Module tag_ram_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v" Line 22. Module sv32_translate_instruction_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "C:/Users/91629/Desktop/mmu/project/project_5/project_5.srcs/sources_1/imports/rtl/sv32_translate_data_to_physical.v" Line 23. Module sv32_translate_data_to_physical_default doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.tag_ram_default
-Compiling module xil_defaultlib.sv32_table_walk_default
-Compiling module xil_defaultlib.tag_ram(TAG_WIDTH=21)
-Compiling module xil_defaultlib.sv32_translate_instruction_to_ph...
-Compiling module xil_defaultlib.sv32_translate_data_to_physical_...
-Compiling module xil_defaultlib.sv32_default
+Compiling module xil_defaultlib.sv32
 Compiling module xil_defaultlib.cache_tb
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot cache_tb_behav

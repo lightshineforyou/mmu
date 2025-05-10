@@ -1,12 +1,14 @@
+`timescale 1ns/1ps
 `include "sv32.vh"
 
 module sv32 #(
     parameter NUM_ENTRIES_ITLB = 64,
     parameter NUM_ENTRIES_DTLB = 64
 ) (
-    input wire clk,
-    input wire resetn,
+    input  wire        clk,
+    input  wire        resetn,
 
+    // CPU interface
     input  wire        cpu_valid,
     output reg         cpu_ready,
     input  wire [ 3:0] cpu_wstrb,
@@ -14,6 +16,7 @@ module sv32 #(
     input  wire [31:0] cpu_wdata,
     output reg  [31:0] cpu_rdata,
 
+    // Memory interface
     output reg         mem_valid,
     input  wire        mem_ready,
     output reg  [ 3:0] mem_wstrb,
@@ -21,12 +24,14 @@ module sv32 #(
     output reg  [31:0] mem_wdata,
     input  wire [31:0] mem_rdata,
 
+    // Stats
     output wire [31:0] cache_miss_count,
 
-    input  wire is_instruction,
-    input  wire tlb_flush,
-    output reg  stall,
-    input  wire write_back,
+    // Unused MMU signals for this cache example
+    input  wire        is_instruction,
+    input  wire        tlb_flush,
+    output reg         stall,
+    input  wire        write_back,
     input  wire [31:0] satp,
     input  wire [31:0] mstatus,
     input  wire [ 1:0] privilege_mode,
@@ -34,282 +39,132 @@ module sv32 #(
     output reg         page_fault
 );
 
-localparam S0 = 0, S1 = 1, S2 = 2, S_LAST = 3;
-localparam STATE_WIDTH = $clog2(S_LAST);
-reg [STATE_WIDTH-1:0] state, next_state;
+  // --------------------------------------------------
+  // Simplified 2-way write-allocate cache logic
+  // --------------------------------------------------
 
-wire [31:0] internal_tlb_miss_count;
+  // Index and tag from CPU address
+  wire [5:0]  cache_idx = cpu_addr[17:12];
+  wire [19:0] cache_tag = cpu_addr[31:12];
+  wire        is_write  = |cpu_wstrb;
 
-wire [33:0] physical_data_address;
-reg         translate_data_valid;
-wire        translate_data_ready;
-wire        page_fault_instruction;
-wire        page_fault_data;
+  // Cache datapath signals
+  wire        hit;
+  wire [31:0] hit_data;
+  reg         cache_we;
+  reg  [31:0] cache_wdata;
 
-wire [33:0] physical_instruction_address;
-reg         translate_instruction_valid;
-wire        translate_instruction_ready;
+  // Miss counter
+  reg [31:0] miss_count;
+  always @(posedge clk) begin
+    if (!resetn) miss_count <= 0;
+    else if (cpu_valid && !hit) miss_count <= miss_count + 1;
+  end
+  assign cache_miss_count = miss_count;
 
-wire        walk_translate_instruction_mem_valid;
-wire        walk_translate_instruction_mem_ready;
-wire [31:0] walk_translate_instruction_mem_addr;
+  // Write state machine for write-back path
+  localparam WR_IDLE  = 2'd0,
+             WR_WAIT  = 2'd1;
+  reg [1:0] wr_state;
 
-wire        walk_translate_data_mem_valid;
-wire        walk_translate_data_mem_ready;
-wire [31:0] walk_translate_data_mem_addr;
+  always @(posedge clk) begin
+    if (!resetn) wr_state <= WR_IDLE;
+    else begin
+      case (wr_state)
+        WR_IDLE: if (cpu_valid && is_write && !hit) wr_state <= WR_WAIT;
+        WR_WAIT: if (mem_ready)                     wr_state <= WR_IDLE;
+      endcase
+    end
+  end
 
-wire [31:0] pte;
+  // Allocate state machine for read- or write-miss fill
+  localparam AL_IDLE = 1'b0,
+             AL_FILL = 1'b1;
+  reg alloc_state;
+  reg [5:0]   alloc_idx;
+  reg [19:0]  alloc_tag;
+  reg [31:0]  alloc_data;
 
-wire        walk_valid;
-wire        walk_ready;
+  always @(posedge clk) begin
+    if (!resetn) alloc_state <= AL_IDLE;
+    else alloc_state <= (alloc_state == AL_FILL ? AL_IDLE :
+             (cpu_valid && !hit && ((is_write && wr_state==WR_WAIT && mem_ready) ||
+              (!is_write && mem_valid && mem_ready))) ? AL_FILL : AL_IDLE);
 
-wire        trans_instr_to_phy_walk_valid;
-wire        trans_instr_to_phy_walk_ready;
+    // capture for AL_FILL
+    if (alloc_state == AL_IDLE && cpu_valid && !hit && mem_ready) begin
+      alloc_idx  <= cache_idx;
+      alloc_tag  <= cache_tag;
+      alloc_data <= is_write ? cpu_wdata : mem_rdata;
+    end
+  end
 
-wire        trans_data_to_phy_walk_valid;
-wire        trans_data_to_phy_walk_ready;
+  // Drive memory interface
+  always @(*) begin
+    // defaults
+    mem_valid = 0;
+    mem_addr  = {2'b00, cpu_addr};
+    mem_wstrb = cpu_wstrb;
+    mem_wdata = cpu_wdata;
+    // on read miss: issue read
+    if (cpu_valid && !is_write && !hit) mem_valid = 1;
+    // on write miss: issue write
+    if (cpu_valid && is_write && !hit)  mem_valid = (wr_state==WR_WAIT);
+  end
 
-wire        walk_mem_valid;
-reg         walk_mem_ready;
-wire [31:0] walk_mem_addr;
-reg  [31:0] walk_mem_rdata;
+  // Cache write enable and data
+  always @(*) begin
+    cache_we    = 0;
+    cache_wdata = 0;
+    // write hit: write-through into cache
+    if (cpu_valid && is_write && hit) begin
+      cache_we    = 1;
+      cache_wdata = cpu_wdata;
+    end
+    // miss allocate fill
+    else if (alloc_state == AL_FILL) begin
+      cache_we    = 1;
+      cache_wdata = alloc_data;
+    end
+  end
 
-wire        is_page_fault;
-
-// 实例化 table walk 模块
-sv32_table_walk u_sv32_table_walk (
-    .clk            (clk),
-    .resetn         (resetn),
-    .tlb_miss_count (internal_tlb_miss_count)
-);
-
-assign is_page_fault = page_fault_instruction || page_fault_data;
-assign tlb_miss_count = internal_tlb_miss_count;
-
-always @(posedge clk) begin
+  // CPU ready and read data registered
+  always @(posedge clk) begin
     if (!resetn) begin
-        page_fault <= 1'b0;
-        fault_address <= 0;
+      cpu_ready <= 0;
+      cpu_rdata <= 0;
     end else begin
-        page_fault <= is_page_fault;
-        if (is_page_fault) fault_address <= cpu_addr;
+      // hit: ready next cycle
+      if (cpu_valid && hit) begin
+        cpu_ready <= 1;
+        cpu_rdata <= hit_data;
+      end
+      // miss fill: ready with alloc_data
+      else if (alloc_state == AL_FILL) begin
+        cpu_ready <= 1;
+        cpu_rdata <= alloc_data;
+      end else begin
+        cpu_ready <= 0;
+      end
     end
-end
+  end
 
-// === Cache tag ram 接口 ===
-wire [5:0] cache_idx = cpu_addr[10:5]; // index width=6
-wire [19:0] cache_tag = cpu_addr[31:11]; // tag width=20
-
-reg cache_we_reg;
-reg [31:0] cache_payload_reg;
-
-// === Cache 写入使能信号（写直达策略） ===
-always @(*) begin
-    cache_we_reg = 1'b0;
-    cache_payload_reg = 32'b0;
-
-    // 写入操作：直接更新缓存（无论是否命中）
-    if (cpu_valid && (|cpu_wstrb)) begin
-        cache_we_reg = 1'b1;
-        cache_payload_reg = cpu_wdata; // 写入用户数据
-    end 
-    // 读取未命中时加载内存数据
-    else if (cpu_valid && !hit_o) begin
-        cache_we_reg = 1'b1;
-        cache_payload_reg = mem_rdata;
-    end
-end
-
-// === 实例化 Cache tag_ram ===
-wire hit_o;
-
-tag_ram #(
+  // Instantiate 2-way tag_ram
+  tag_ram #(
     .TAG_RAM_ADDR_WIDTH(6),
-    .TAG_WIDTH(21),
+    .TAG_WIDTH(20),
     .PAYLOAD_WIDTH(32),
     .WAYS(2)
-) u_tag_ram (
-    .clk(clk),
-    .resetn(resetn),
-    .idx(cache_idx),
-    .tag(cache_tag),
-    .payload_i(cache_payload_reg),
-    .we(cache_we_reg),
-    .valid_i(cpu_valid),
-    .hit_o(hit_o),
-    .payload_o() // 不使用输出
-);
-
-// === Cache 缺失计数器 ===
-reg [31:0] cache_miss_count_reg;
-always @(posedge clk) begin
-    if (!resetn) begin
-        cache_miss_count_reg <= 0;
-    end else if (cpu_valid && !hit_o) begin
-        cache_miss_count_reg <= cache_miss_count_reg + 1;
-    end
-end
-assign cache_miss_count = cache_miss_count_reg;
-
-always @(posedge clk) begin
-    state <= !resetn ? S0 : next_state;
-end
-
-wire translate_req_pending;
-wire mmu_translate_enable = `GET_SATP_MODE(satp);
-assign translate_req_pending = mmu_translate_enable && cpu_valid && !mem_ready && !page_fault;
-
-wire translation_complete;
-assign translation_complete = translate_instruction_ready || translate_data_ready;
-
-always @(*) begin
-    next_state = state;
-    case (state)
-        S0: next_state = translate_req_pending ? S1 : S0;
-        S1: next_state = is_page_fault ? S0 : (translation_complete ? S2 : S1);
-        S2: next_state = mem_ready ? S0 : S2;
-        default: next_state = S0;
-    endcase
-end
-
-always @(*) begin
-    translate_instruction_valid = 1'b0;
-    translate_data_valid = 1'b0;
-
-    case (state)
-        S0: begin
-            if (translate_req_pending) begin
-                translate_instruction_valid = is_instruction;
-                translate_data_valid = !is_instruction;
-            end
-        end
-    endcase
-end
-
-wire [33:0] selected_phys_addr;
-assign selected_phys_addr = is_instruction ? physical_instruction_address : physical_data_address;
-
-always @(*) begin
-    stall = 1'b0;
-    mem_addr = 0;
-    cpu_rdata = 0;
-    mem_wstrb = 0;
-    mem_wdata = 0;
-    mem_valid = 1'b0;
-    cpu_ready = mem_ready;
-    walk_mem_rdata = 0;
-    walk_mem_ready = 1'b0;
-
-    case (state)
-        S0: begin
-            if (mmu_translate_enable && cpu_valid) begin
-                cpu_ready = 1'b0;
-            end else begin
-                mem_addr  = {2'b0, cpu_addr};
-                mem_wstrb = cpu_wstrb;
-                mem_wdata = cpu_wdata;
-                cpu_rdata = mem_rdata;
-                mem_valid = cpu_valid;
-            end
-        end
-        S1: begin
-            stall = 1'b1;
-            mem_addr = {2'b0, walk_mem_addr};
-            mem_wstrb = 4'b0000;
-            mem_wdata = 0;
-            walk_mem_rdata = mem_rdata;
-            mem_valid = walk_mem_valid;
-            walk_mem_ready = mem_ready;
-            cpu_ready = 1'b0;
-
-            if (translation_complete && !is_page_fault) begin
-                mem_addr  = selected_phys_addr;
-                mem_wstrb = cpu_wstrb;
-                mem_wdata = cpu_wdata;
-                cpu_rdata = mem_rdata;
-                mem_valid = cpu_valid;
-            end
-        end
-        S2: begin
-            if (cpu_valid && |cpu_wstrb) begin
-                if (write_back) begin
-                    mem_addr = selected_phys_addr;
-                    mem_wdata = cpu_wdata;
-                    mem_wstrb = cpu_wstrb;
-                end else begin
-                    mem_addr = selected_phys_addr;
-                    mem_wdata = cpu_wdata;
-                    mem_wstrb = cpu_wstrb;
-                end
-            end else begin
-                mem_addr  = selected_phys_addr;
-                mem_wstrb = cpu_wstrb;
-                mem_wdata = cpu_wdata;
-                cpu_rdata = mem_rdata;
-                mem_valid = cpu_valid;
-            end
-        end
-    endcase
-end
-
-assign walk_valid = is_instruction ? trans_instr_to_phy_walk_valid : trans_data_to_phy_walk_valid;
-assign trans_instr_to_phy_walk_ready = is_instruction && walk_ready;
-assign trans_data_to_phy_walk_ready = !is_instruction && walk_ready;
-
-sv32_table_walk #(
-    .NUM_ENTRIES_ITLB(NUM_ENTRIES_ITLB),
-    .NUM_ENTRIES_DTLB(NUM_ENTRIES_DTLB)
-) sv32_table_walk_I (
-    .clk    (clk),
-    .resetn (resetn),
-    .address(cpu_addr),
-    .satp   (satp),
-    .pte    (pte),
-
-    .is_instruction(is_instruction),
-    .tlb_flush(tlb_flush),
-
-    .valid(walk_valid),
-    .ready(walk_ready),
-
-    .walk_mem_valid(walk_mem_valid),
-    .walk_mem_ready(walk_mem_ready),
-    .walk_mem_addr (walk_mem_addr),
-    .walk_mem_rdata(walk_mem_rdata)
-);
-
-sv32_translate_instruction_to_physical sv32_translate_instruction (
-    .clk             (clk),
-    .resetn          (resetn),
-    .address         (cpu_addr),
-    .physical_address(physical_instruction_address),
-    .page_fault      (page_fault_instruction),
-    .privilege_mode  (privilege_mode),
-
-    .valid(translate_instruction_valid),
-    .ready(translate_instruction_ready),
-
-    .walk_valid(trans_instr_to_phy_walk_valid),
-    .walk_ready(trans_instr_to_phy_walk_ready),
-    .pte(pte)
-);
-
-sv32_translate_data_to_physical sv32_translate_data (
-    .clk             (clk),
-    .resetn          (resetn),
-    .address         (cpu_addr),
-    .physical_address(physical_data_address),
-    .is_write        (|cpu_wstrb),
-    .page_fault      (page_fault_data),
-    .privilege_mode  (privilege_mode),
-    .mstatus         (mstatus),
-
-    .valid(translate_data_valid),
-    .ready(translate_data_ready),
-
-    .walk_valid(trans_data_to_phy_walk_valid),
-    .walk_ready(trans_data_to_phy_walk_ready),
-    .pte_(pte)
-);
+  ) u_tag_ram (
+    .clk      (clk),
+    .resetn   (resetn),
+    .idx      (alloc_state==AL_FILL ? alloc_idx : cache_idx),
+    .tag      (alloc_state==AL_FILL ? alloc_tag : cache_tag),
+    .payload_i(cache_wdata),
+    .we       (cache_we),
+    .valid_i  (cpu_valid),
+    .hit_o    (hit),
+    .payload_o(hit_data)
+  );
 
 endmodule

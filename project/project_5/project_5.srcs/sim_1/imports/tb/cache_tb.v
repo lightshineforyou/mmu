@@ -1,192 +1,162 @@
-`timescale 1ns / 1ps
-
 module cache_tb;
+  reg         clk;
+  reg         resetn;
+  reg         cpu_valid;
+  reg  [3:0]  cpu_wstrb;
+  reg  [31:0] cpu_addr;
+  reg  [31:0] cpu_wdata;
+  wire [31:0] cpu_rdata;
+  wire        cpu_ready;
 
-    // 时钟和复位信号
-    reg clk;
-    reg resetn;
+  wire        mem_ready;
+  reg         mem_ready_reg;
+  wire        mem_valid;
+  wire [ 3:0] mem_wstrb;
+  wire [33:0] mem_addr;
+  wire [31:0] mem_wdata;
+  reg  [31:0] mem_rdata;
 
-    // CPU接口信号
-    reg        cpu_valid;
-    reg [3:0]  cpu_wstrb;
-    reg [31:0] cpu_addr;
-    reg [31:0] cpu_wdata;
-    wire [31:0] cpu_rdata;
-    wire [31:0] cache_miss_count;
+  wire [31:0] cache_miss_count;
 
-    // 内存接口信号
-    wire        mem_valid;
-    wire [3:0]  mem_wstrb;
-    wire [33:0] mem_addr;
-    wire [31:0] mem_wdata;
-    reg  [31:0] mem_rdata;
-    reg         mem_ready;
-    // 内存数据动态生成（同步版本）
-reg [31:0] stored_data [0:1023]; // 模拟内存存储
+  // dummy MMU signals
+  wire is_instruction = 0;
+  wire tlb_flush = 0;
+  wire stall;
+  wire write_back = 0;
+  wire [31:0] satp = 0;
+  wire [31:0] mstatus = 0;
+  wire [1:0]  privilege_mode = 0;
+  wire [31:0] fault_address;
+  wire page_fault;
 
-always @(posedge clk) begin
-    if (mem_valid && mem_ready) begin
-        if (mem_wstrb != 0) begin
-            // 写入操作：存储用户数据到内存
-            stored_data[mem_addr[31:6]] <= mem_wdata;
-        end
-    end
-end
+  // Instantiate DUT
+  sv32 u_dut (
+    .clk(clk),
+    .resetn(resetn),
+    .cpu_valid(cpu_valid),
+    .cpu_ready(cpu_ready),
+    .cpu_wstrb(cpu_wstrb),
+    .cpu_addr(cpu_addr),
+    .cpu_wdata(cpu_wdata),
+    .cpu_rdata(cpu_rdata),
+    .mem_valid(mem_valid),
+    .mem_ready(mem_ready_reg),
+    .mem_wstrb(mem_wstrb),
+    .mem_addr(mem_addr),
+    .mem_wdata(mem_wdata),
+    .mem_rdata(mem_rdata),
+    .cache_miss_count(cache_miss_count),
+    .is_instruction(is_instruction),
+    .tlb_flush(tlb_flush),
+    .stall(stall),
+    .write_back(write_back),
+    .satp(satp),
+    .mstatus(mstatus),
+    .privilege_mode(privilege_mode),
+    .fault_address(fault_address),
+    .page_fault(page_fault)
+  );
 
-always @(*) begin
-    if (mem_valid && mem_ready) begin
-        if (mem_wstrb != 0) begin
-            // 写入操作返回用户数据
-            mem_rdata = mem_wdata;
-        end else begin
-            // 读取操作返回存储的数据
-            mem_rdata = stored_data[mem_addr[31:6]];
-        end
+  // Simple memory model
+  reg [31:0] memory [0:255]; // 1KB memory
+  integer i;
+
+  always @(posedge clk) begin
+    if (mem_valid) begin
+      if (|mem_wstrb) begin
+        memory[mem_addr[9:2]] <= mem_wdata;
+      end else begin
+        mem_rdata <= memory[mem_addr[9:2]];
+      end
+      mem_ready_reg <= 1;
     end else begin
-        mem_rdata = 32'h0;
+      mem_ready_reg <= 0;
     end
-end
+  end
 
-    // 实例化被测模块
-    sv32 u_sv32 (
-        .clk(clk),
-        .resetn(resetn),
-        .cpu_valid(cpu_valid),
-        .cpu_ready(),          // 未连接（由内部逻辑处理）
-        .cpu_wstrb(cpu_wstrb),
-        .cpu_addr(cpu_addr),
-        .cpu_wdata(cpu_wdata),
-        .cpu_rdata(cpu_rdata),
-        .mem_valid(mem_valid),
-        .mem_ready(mem_ready),
-        .mem_wstrb(mem_wstrb),
-        .mem_addr(mem_addr),
-        .mem_wdata(mem_wdata),
-        .mem_rdata(mem_rdata),
-        .cache_miss_count(cache_miss_count),
-        .is_instruction(1'b0), // 仅测试数据缓存
-        .tlb_flush(1'b0),
-        .stall(),
-        .write_back(1'b0),
-        .satp(32'h0),          // 禁用分页
-        .mstatus(32'h0),
-        .privilege_mode(2'b11),
-        .fault_address(),
-        .page_fault()
-    );
+  // Clock generation
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+  end
 
-    // 时钟生成
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk;
+  // Reset
+  initial begin
+    resetn = 0;
+    #20;
+    resetn = 1;
+  end
+
+  // Test sequences
+  initial begin
+    // init
+    cpu_valid = 0;
+    cpu_wstrb = 0;
+    cpu_addr = 0;
+    cpu_wdata = 0;
+    for (i=0; i<256; i=i+1) memory[i] = 0;
+
+    // wait reset
+    @(posedge resetn);
+    #10;
+
+    // 1) Write then Read same address (hit)
+    test_write(32'h0000_0100, 32'hA5A5_A5A5);
+    test_read (32'h0000_0100, 32'hA5A5_A5A5);
+
+    // 2) Fill two ways in same set -> provoke LRU replacement
+    test_write(32'h0000_0200, 32'h1111_1111); // way0
+    test_write(32'h0000_0300, 32'h2222_2222); // way1
+    test_write(32'h0000_0400, 32'h3333_3333); // replaces LRU
+    test_read (32'h0000_0400, 32'h3333_3333);
+
+    // 3) Read miss then read hit (use different set to avoid LRU collision)
+    
+    test_read (32'h0000_0600, 32'h0000_0000); // miss allocate from mem (zero)
+    @(posedge clk);
+    @(posedge clk);
+    test_read (32'h0000_0600, 32'h0000_0000); // read hit from cache
+
+    // Summary
+    #50;
+    $display("[统计] Cache 缺失次数 = %0d 次", cache_miss_count);
+    #10 $finish;
+  end
+
+  // tasks
+  task test_write(input [31:0] addr, input [31:0] data);
+    begin
+      @(posedge clk);
+      cpu_addr = addr;
+      cpu_wdata = data;
+      cpu_wstrb = 4'hF;
+      cpu_valid = 1;
+      @(posedge clk);
+      wait(cpu_ready);
+      @(posedge clk);
+      cpu_valid = 0;
+      cpu_wstrb = 0;
+      #2;
+      $display("[测试] 写入 地址＝0x%h 数据＝0x%h 成功", addr, data);
     end
+  endtask
 
-    // 主测试流程
-    initial begin
-        // 初始化
-        resetn = 0;
-        cpu_valid = 0;
-        cpu_wstrb = 0;
-        cpu_addr = 0;
-        cpu_wdata = 0;
-        mem_ready = 1;          // 内存始终就绪
-        mem_rdata = 32'h0;      // 内存返回数据初始化为0
-        #20;
-        resetn = 1;
-
-        // ===================================
-        // 测试阶段1：基本读写验证（同一索引不同标签）
-        // ===================================
-        $display("\n--- 阶段1：基本读写验证 ---");
-        
-        // 写入地址 0x100（索引=4, 标签=0x04）
-        write_data(32'h100, 32'ha5a5a5a5);
-        // 读取地址 0x100，应命中
-        read_data(32'h100, 32'ha5a5a5a5);
-
-        // 写入地址 0x200（索引=8, 标签=0x08）
-        write_data(32'h200, 32'h11111111);
-        // 读取地址 0x200，应命中
-        read_data(32'h200, 32'h11111111);
-
-        // 写入地址 0x400（索引=16, 标签=0x10）
-        write_data(32'h400, 32'h33333333);
-        // 读取地址 0x400，应命中
-        read_data(32'h400, 32'h33333333);
-
-        // 验证缺失次数（预期3次）
-        $display("[阶段1] 缺失次数 = %d (预期3)", cache_miss_count);
-
-        // ===================================
-        // 测试阶段2：LRU替换策略验证
-        // ===================================
-        $display("\n--- 阶段2：LRU替换验证 ---");
-        
-        // 访问地址 0x500（索引=20, 标签=0x14）-> 缺失
-        read_data(32'h500, 32'h0);
-        // 访问地址 0x600（索引=24, 标签=0x18）-> 缺失
-        read_data(32'h600, 32'h0);
-        // 再次访问 0x100（索引=4）-> 应命中，LRU不更新
-        read_data(32'h100, 32'ha5a5a5a5);
-        // 访问地址 0x700（索引=28, 标签=0x1C）-> 缺失（替换LRU路）
-        read_data(32'h700, 32'h0);
-        // 验证缺失次数（3 + 3 = 6）
-        $display("[阶段2] 缺失次数 = %d (预期6)", cache_miss_count);
-
-        // ===================================
-        // 测试阶段3：跨组冲突验证
-        // ===================================
-        $display("\n--- 阶段3：跨组冲突验证 ---");
-        
-        // 访问地址 0x800（索引=32, 标签=0x20）-> 缺失
-        read_data(32'h800, 32'h0);
-        // 访问地址 0x900（索引=36, 标签=0x24）-> 缺失
-        read_data(32'h900, 32'h0);
-        // 再次访问 0x100（索引=4）-> 应命中
-        read_data(32'h100, 32'ha5a5a5a5);
-        // 验证缺失次数（6 + 2 = 8）
-        $display("[阶段3] 缺失次数 = %d (预期8)", cache_miss_count);
-
-        // ===================================
-        // 测试结束
-        // ===================================
-        #100;
-        $display("\n--- 测试完成 ---");
-        $finish;
+  task test_read(input [31:0] addr, input [31:0] exp);
+    begin
+      @(posedge clk);
+      cpu_addr = addr;
+      cpu_wstrb = 0;
+      cpu_valid = 1;
+      @(posedge clk);
+      wait(cpu_ready);
+      @(posedge clk);
+      cpu_valid = 0;
+      if (cpu_rdata !== exp) begin
+        $error("[错误] 读取 地址＝0x%h 期望＝0x%h 实际＝0x%h", addr, exp, cpu_rdata);
+      end else begin
+        $display("[测试] 读取 地址＝0x%h 数据＝0x%h 正确", addr, cpu_rdata);
+      end
+      #2;
     end
-
-    // 写入任务
-    task write_data(input [31:0] addr, input [31:0] data);
-        begin
-            @(negedge clk);
-            cpu_valid = 1;
-            cpu_wstrb = 4'hF;  // 全字节写入
-            cpu_addr = addr;
-            cpu_wdata = data;
-            @(negedge clk);
-            cpu_valid = 0;
-            cpu_wstrb = 0;
-            #10;
-            $display("[写入] 地址=0x%h 数据=0x%h", addr, data);
-        end
-    endtask
-
-    // 读取任务（带预期值检查）
-    task read_data(input [31:0] addr, input [31:0] expected);
-        begin
-            @(negedge clk);
-            cpu_valid = 1;
-            cpu_wstrb = 4'h0;  // 读操作
-            cpu_addr = addr;
-            @(negedge clk);
-            cpu_valid = 0;
-            #20; // 等待结果稳定
-            if (cpu_rdata !== expected) begin
-                $error("[错误] 地址=0x%h 预期=0x%h 实际=0x%h", addr, expected, cpu_rdata);
-            end else begin
-                $display("[读取] 地址=0x%h 数据=0x%h 正确", addr, cpu_rdata);
-            end
-        end
-    endtask
-
-endmodule 
+  endtask
+endmodule

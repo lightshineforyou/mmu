@@ -58,7 +58,7 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="126"/>
+    <Option Name="WTXSimLaunchSim" Val="139"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -89,51 +89,6 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32.vh">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32.vh"/>
-          <Attr Name="ImportTime" Val="1745645917"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="IsVisible" Val="1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_table_walk.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_table_walk.v"/>
-          <Attr Name="ImportTime" Val="1745647075"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/riscv_priv_csr_status.vh">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/riscv_priv_csr_status.vh"/>
-          <Attr Name="ImportTime" Val="1745645917"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-          <Attr Name="IsVisible" Val="1"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_translate_data_to_physical.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_translate_data_to_physical.v"/>
-          <Attr Name="ImportTime" Val="1745645917"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_translate_instruction_to_physical.v"/>
-          <Attr Name="ImportTime" Val="1745645917"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/rtl/tag_ram.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/tag_ram.v"/>
@@ -143,10 +98,59 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32.vh">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32.vh"/>
+          <Attr Name="ImportTime" Val="1745645917"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="IsVisible" Val="1"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/rtl/sv32.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32.v"/>
           <Attr Name="ImportTime" Val="1746579558"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_table_walk.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_table_walk.v"/>
+          <Attr Name="ImportTime" Val="1745647075"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/riscv_priv_csr_status.vh">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/riscv_priv_csr_status.vh"/>
+          <Attr Name="ImportTime" Val="1745645917"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+          <Attr Name="IsVisible" Val="1"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_translate_data_to_physical.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_translate_data_to_physical.v"/>
+          <Attr Name="ImportTime" Val="1745645917"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/sv32_translate_instruction_to_physical.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../src/rtl/sv32_translate_instruction_to_physical.v"/>
+          <Attr Name="ImportTime" Val="1745645917"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

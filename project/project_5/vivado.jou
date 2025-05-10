@@ -3,10 +3,10 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Fri May  9 09:48:46 2025
-# Process ID         : 5640
+# Start of session at: Sat May 10 09:40:27 2025
+# Process ID         : 23380
 # Current directory  : C:/Users/91629/Desktop/mmu/project/project_5
-# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent21548 C:\Users\91629\Desktop\mmu\project\project_5\project_5.xpr
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent14188 C:\Users\91629\Desktop\mmu\project\project_5\project_5.xpr
 # Log file           : C:/Users/91629/Desktop/mmu/project/project_5/vivado.log
 # Journal file       : C:/Users/91629/Desktop/mmu/project/project_5\vivado.jou
 # Running On         : wangzhangzhuo
@@ -17,81 +17,10 @@
 # CPU Physical cores : 8
 # CPU Logical cores  : 16
 # Host memory        : 16334 MB
-# Swap memory        : 7411 MB
-# Total Virtual      : 23746 MB
-# Available Virtual  : 9853 MB
+# Swap memory        : 7444 MB
+# Total Virtual      : 23779 MB
+# Available Virtual  : 10467 MB
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/91629/Desktop/mmu/project/project_5/project_5.xpr
 update_compile_order -fileset sources_1
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-update_compile_order -fileset sources_1
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-close_sim
-launch_simulation
-update_compile_order -fileset sources_1
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-update_compile_order -fileset sources_1
-launch_simulation
-source cache_tb.tcl
-close_sim
-launch_simulation
-source cache_tb.tcl
